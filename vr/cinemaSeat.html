@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>IO</title>
+	<script src="./js/aframe.min.js"></script>
+	<script src="./js/aframe-ar.js"> </script>
+	<script type="text/javascript" src='./js/aframe-animation-component.min.js'></script>
+</head>
+<body style="margin: 0; overflow: hidden;">
+	<a-scene embedded arjs background="color: #ECECEC">
+		<a-entity camera></a-entity>
+		<!-- <a-assets>
+			<a-asset-item id="tree" src="./model.dae">
+		</a-assets> -->
+
+		<!-- <a-box position="-1 0.5 -3" rotation="0 45 0" color="#4CC3D9" shadow></a-box> -->
+
+		<!-- <a-collada-model src="./model.dae" position="0.7 0.5 -4" rotation="0 180 0"></a-collada-model>
+		<a-collada-model src="./model.dae" position="1.5 0.5 -4" rotation="0 180 0"></a-collada-model>
+		<a-collada-model src="./model.dae" position="2.3 0.5 -4" rotation="0 180 0"></a-collada-model> -->
+    </a-scene>
+    <script type="text/javascript">
+    	window.onload = function() {
+    		let sceneEl = document.querySelector('a-scene');
+    		const zPosition = [-4, -6, -8], elems = [], num = 3, x = 0.5;
+    		zPosition.forEach((z, i) => {
+    			const xOffset = x - i * 0.8;
+    			for(let index = 0; index < num + 2 * i; index++) {
+    				const colladaModel = document.createElement('a-collada-model');
+    				colladaModel.setAttribute('src', './model.dae');
+    				colladaModel.setAttribute('rotation', '0 180 0');
+    				colladaModel.setAttribute('position', `${xOffset+index*0.8} ${0.5 + i * 0.4} ${z}`);
+    				sceneEl.appendChild(colladaModel)
+    			}
+    		})
+    	}
+    </script>
+</body>
+</html>
